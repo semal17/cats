@@ -47,16 +47,15 @@ let list = [
   },
 ];
 
-
-
 function App() {
   const [cats, setCats] = useState(list);
-  
+
   let onBuy = (item) => {
-    const temp = [ ...cats];
+    const temp = [...cats];
     const id = item.id;
-    temp.find(cat => cat.id === id).buy = !temp.find(cat => cat.id === id).buy;
-   setCats(temp);
+    temp.find((cat) => cat.id === id).buy = !temp.find((cat) => cat.id === id)
+      .buy;
+    setCats(temp);
   };
 
   let catsList = cats.map((item) => {
@@ -67,32 +66,30 @@ function App() {
     let classBG = "cats__bg";
     let classSpan = "cats__span";
     let action;
-  
-    
-  
+
     if (item.buy === false && item.amount > 0) {
       action = item.start;
-      classBG += '  cats__bg--hide';
+      classBG += "  cats__bg--hide";
     } else if (item.buy === true && item.amount > 0) {
       action = item.action;
       classBuy += " cats__buy--hide";
       classIntro += " cats__intro--border";
       classWT += " cats-wt--color";
-      classBG += '  cats__bg--hide';
-      classSpan += ' cats__span--buy';
+      classBG += "  cats__bg--hide";
+      classSpan += " cats__span--buy";
     } else {
       action = item.end;
       classBuy += " cats__buy--hide";
       classIntro += " cats__intro--end";
       classWT += " cats-wt--end";
       classContainer += " cats__container--end";
-      classSpan += ' cats__span--end';
+      classSpan += " cats__span--end";
     }
-  
+
     return (
       <li className="cats__item" key={item.total}>
         <div className={classIntro} onClick={() => onBuy(item)}>
-        <span className={classSpan}></span>
+          <span className={classSpan}></span>
           <div className={classContainer}>
             <p className="cats__title">{item.title}</p>
             <h2 className="cats__name">{item.name}</h2>
@@ -119,7 +116,7 @@ function App() {
       </li>
     );
   });
-  
+
   return (
     <main className="main container">
       <h1 className="title">Ты сегодня покормил кота?</h1>

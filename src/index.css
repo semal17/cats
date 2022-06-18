@@ -60,18 +60,17 @@ body {
   line-height: 19px;
   background-color: #000;
   background-image: url('./images/Pattern.png');
-  user-select: none; 
+  user-select: none;
 }
 
 .title {
   font-size: 30px;
-line-height: 36px;
+  line-height: 36px;
 
 }
 
 .container {
   width: 320px;
-  
   margin: 0 auto;
 }
 
@@ -84,9 +83,8 @@ line-height: 36px;
 }
 
 @media (min-width: 1100px) {
-  .container {    
+  .container {
     width: 100%;
     max-width: 1300px;
   }
 }
-
