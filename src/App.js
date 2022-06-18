@@ -14,7 +14,8 @@ let list = [
     action: "Печень утки разварная с артишоками.",
     end: "Печалька, с фуа-гра закончился.",
     amount: 1,
-    buy: true,
+    buy: false,
+    id: 1,
   },
   {
     name: "Нямушка",
@@ -27,7 +28,8 @@ let list = [
     action: "Головы щучьи с чесноком да свежайшая сёмгушка.",
     end: "Печалька, с рыбой закончился.",
     amount: 2,
-    buy: false,
+    buy: true,
+    id: 2,
   },
   {
     name: "Нямушка",
@@ -41,13 +43,23 @@ let list = [
     end: "Печалька, с курой закончился.",
     amount: 0,
     buy: true,
+    id: 3,
   },
 ];
 
 
 
 function App() {
-  let cats = list.map((item) => {
+  const [cats, setCats] = useState(list);
+  
+  let onBuy = (item) => {
+    const temp = [ ...cats];
+    const id = item.id;
+    temp.find(cat => cat.id === id).buy = !temp.find(cat => cat.id === id).buy;
+   setCats(temp);
+  };
+
+  let catsList = cats.map((item) => {
     let classBuy = "cats__buy";
     let classIntro = "cats__intro";
     let classWT = "cats-wt";
@@ -56,10 +68,7 @@ function App() {
     let classSpan = "cats__span";
     let action;
   
-    let onBuy = () => {
-      console.log(item.buy);
-      item.buy = !item.buy;
-    };
+    
   
     if (item.buy === false && item.amount > 0) {
       action = item.start;
@@ -82,7 +91,7 @@ function App() {
   
     return (
       <li className="cats__item" key={item.total}>
-        <div className={classIntro} onClick={onBuy}>
+        <div className={classIntro} onClick={() => onBuy(item)}>
         <span className={classSpan}></span>
           <div className={classContainer}>
             <p className="cats__title">{item.title}</p>
@@ -102,7 +111,7 @@ function App() {
         <p className="cats__action">
           {" "}
           {action}
-          <span className={classBuy} onClick={onBuy}>
+          <span className={classBuy} onClick={() => onBuy(item)}>
             {" "}
             купи
           </span>
@@ -115,7 +124,7 @@ function App() {
     <main className="main container">
       <h1 className="title">Ты сегодня покормил кота?</h1>
       <section className="cats">
-        <ul className="cats__list">{cats}</ul>
+        <ul className="cats__list">{catsList}</ul>
       </section>
     </main>
   );

@@ -60,6 +60,7 @@ body {
   line-height: 19px;
   background-color: #000;
   background-image: url('./images/Pattern.png');
+  user-select: none; 
 }
 
 .title {
@@ -70,14 +71,15 @@ line-height: 36px;
 
 .container {
   width: 320px;
-  padding: 0 10px;
+  
   margin: 0 auto;
 }
 
 
-@media (min-width: 688px) {
+@media (min-width: 700px) {
   .container {
-    width: 680px;
+    width: 700px;
+    padding: 0 20px;
   }
 }
 

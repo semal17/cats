@@ -169,7 +169,7 @@
   display: none;
 }
 
-@media (min-width: 688px) {
+@media (min-width: 700px) {
   .cats__list {
     flex-direction: row;
     justify-content: space-between;
